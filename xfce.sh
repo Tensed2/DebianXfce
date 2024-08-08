@@ -59,7 +59,7 @@ sudo nala install amd64-microcode -y
 
 #Tools
 sudo nala install -y git exa bat bash-completion speedtest-cli gufw htop neofetch ffmpeg ffmpegthumbnailer unzip unrar p7zip p7zip-full curl mintstick
-sudo nala install -y iptraf-ng ncdu duf psmisc
+sudo nala install -y iptraf-ng ncdu duf psmisc yt-dlp
 
 #APPS
 sudo nala install -y gparted synaptic bleachbit mpv qbittorrent keepassxc geany
