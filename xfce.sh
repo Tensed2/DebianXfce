@@ -8,6 +8,9 @@ sudo nala upgrade -y
 sudo nala install -y xorg
 #sudo nala install -y xbindkeys xinput xbacklight xvkbd
 
+#Display Compositor
+sudo nala install -y Picom
+
 # Install LightDM GTK Greeter Settings (lightdm,lightdm-gtk-greeter installs with xfce)
 sudo nala install lightdm slick-greeter lightdm-gtk-greeter-settings -y
 
