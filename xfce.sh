@@ -5,7 +5,7 @@ sudo apt update && sudo apt install nala -y
 sudo nala upgrade -y
 
 # xorg display server installation
-sudo nala install -y xorg
+sudo nala install -y xorg xserver-xorg
 #sudo nala install -y xbindkeys xinput xbacklight xvkbd
 
 #Display Compositor
@@ -30,10 +30,10 @@ xdg-user-dirs-update
 
 ##GUI (Xfce)
 #XFCE packages
-sudo nala install -y xfce4 xfce4-goodies
+sudo nala install -y xfce4 xfce4-goodies xfce4-power-manager
 
 # Sound packages (pipewire)
-sudo nala install -y pipewire pipewire-audio wireplumber
+sudo nala install -y pipewire pipewire-audio
 # Sound packages (pulseaudio)
 #pulseaudio alsa-utils pavucontrol volumeicon-alsa pamixer pavucontrol
 
@@ -47,14 +47,13 @@ sudo nala install -y pipewire pipewire-audio wireplumber
 #sudo nala install python3-pip -y
 
 # Networking etc
-sudo nala install -y policykit-1-gnome network-manager 
-#network-manager-gnome
+#sudo nala install -y policykit-1-gnome network-manager network-manager-gnome
 
 # Thunar
 #sudo apt install -y thunar thunar-archive-plugin thunar-volman file-roller
 
 # Terminal (eg. terminator,kitty,xfce4-terminal)
-sudo nala install -y xfce4-terminal
+# sudo nala install -y xfce4-terminal
 
 #Microcode (Intel/AMD)
 #sudo nala install intel-microcode -y
@@ -62,21 +61,24 @@ sudo nala install amd64-microcode -y
 
 #Tools
 sudo nala install -y git exa bat bash-completion speedtest-cli gufw htop neofetch ffmpeg ffmpegthumbnailer unzip unrar p7zip p7zip-full curl mintstick
-sudo nala install -y iptraf-ng ncdu duf psmisc yt-dlp
+sudo nala install -y iptraf-ng ncdu duf psmisc
 
 #APPS
-sudo nala install -y gparted synaptic bleachbit mpv qbittorrent keepassxc geany
-
+sudo nala install -y gparted synaptic bleachbit qbittorrent keepassxc cpu-x
 
 # Install browser
-sudo nala install firefox-esr -y
+#sudo nala install firefox-esr -y
 
-# Install floorp-browser
-#nala install apt-transport-https curl -y
-#curl -fsSL https://ppa.ablaze.one/KEY.gpg | gpg --dearmor -o /usr/share/keyrings/Floorp.gpg
-#curl -sS --compressed -o /etc/apt/sources.list.d/Floorp.list 'https://ppa.ablaze.one/Floorp.list'
-#nala update
-#nala install floorp -y
+#firefox
+sudo install -d -m 0755 /etc/apt/keyrings
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null 
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null 
+echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla 
+sudo apt-get update && sudo apt-get install firefox 
 
 #Debian-Restricted-Extras
 sudo nala install gstreamer1.0-libav gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-vaapi libavcodec-extra unshield dkms -y
@@ -85,7 +87,8 @@ sudo nala install gstreamer1.0-libav gstreamer1.0-plugins-bad gstreamer1.0-plugi
 #sudo nala install cabextract libdvdnav4 libdvdread8 default-jdk
 
 # Install fonts
-sudo nala install fonts-font-awesome fonts-powerline fonts-ubuntu ttf-mscorefonts-installer fonts-roboto fonts-jetbrains-mono -y
+sudo nala install fonts-font-awesome fonts-ubuntu ttf-mscorefonts-installer fonts-roboto fonts-jetbrains-mono fonts-recommended  -y
+#fonts-powerline
 
 #Clean
 sudo apt autoclean && sudo nala autoremove -y
